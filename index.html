@@ -3,442 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujian Cyber Security</title>
+    <title>Ujian Cyber Dari Actzy</title>
     <style>
+        :root {
+            --primary: #1a237e;
+            --secondary: #0d47a1;
+            --accent: #00c853;
+            --dark: #0d1b2a;
+            --light: #e8eaf6;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Roboto', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f5f7fa;
             margin: 0;
             padding: 20px;
             color: #333;
         }
+        
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
+        
         header {
-            background: #2c3e50;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
             color: white;
-            padding: 20px;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .login-form, .exam-container, .result-container {
-            padding: 20px;
-        }
-        .question {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        button {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background: #2980b9;
-        }
-        .certificate {
-            display: none;
-            width: 800px;
-            height: 600px;
-            margin: 20px auto;
-            background: #f9f9f9;
-            border: 15px solid #2c3e50;
-            padding: 40px;
+            padding: 30px;
             text-align: center;
             position: relative;
+            border-bottom: 5px solid var(--accent);
         }
+        
+        .login-form, .exam-container, .result-container {
+            padding: 30px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Professional Certificate Design */
+        .certificate {
+            display: none;
+            width: 900px;
+            height: 650px;
+            margin: 30px auto;
+            background: white;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 15px solid var(--primary);
+            overflow: hidden;
+        }
+        
+        .certificate-content {
+            padding: 60px;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png');
+            position: relative;
+            z-index: 1;
+        }
+        
+        .certificate-border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px dashed var(--accent);
+            z-index: 2;
+            pointer-events: none;
+        }
+        
         .certificate h2 {
-            color: #2c3e50;
-            font-size: 28px;
+            color: var(--primary);
+            font-size: 36px;
             margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
         }
+        
+        .certificate h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            right: 30%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+        }
+        
         .certificate h3 {
-            font-size: 32px;
-            color: #27ae60;
-            margin: 30px 0;
+            font-size: 42px;
+            color: var(--primary);
+            margin: 40px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.05);
         }
+        
         .certificate p {
-            font-size: 18px;
-            margin: 15px 0;
+            font-size: 20px;
+            margin: 20px 0;
+            line-height: 1.6;
         }
+        
         .certificate-logo {
-            width: 100px;
-            margin-bottom: 20px;
+            width: 150px;
+            margin-bottom: 30px;
         }
+        
         .certificate-stamp {
             position: absolute;
-            right: 50px;
-            bottom: 50px;
-            width: 100px;
-            opacity: 0.8;
+            right: 80px;
+            bottom: 80px;
+            width: 150px;
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.2));
         }
-        .pass {
-            color: #27ae60;
+        
+        .certificate-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 160px;
             font-weight: bold;
-            font-size: 24px;
-            margin: 20px 0;
+            color: rgba(0, 200, 83, 0.08);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            white-space: nowrap;
         }
-        .fail {
-            color: #e74c3c;
-            font-weight: bold;
-            font-size: 24px;
-            margin: 20px 0;
+        
+        .certificate-number {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 16px;
+            color: #666;
         }
-        .timer {
-            background: #2c3e50;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 20px;
+        
+        .certificate-signature {
+            position: absolute;
+            bottom: 100px;
+            left: 100px;
+            width: 200px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
             text-align: center;
+            font-weight: bold;
+        }
+        
+        .pass {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 28px;
+            margin: 30px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .fail {
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 30px 0;
+        }
+        
+        .timer {
+            background: var(--dark);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .timer span {
+            margin-left: 10px;
+        }
+        
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0 25px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 8px rgba(26, 35, 126, 0.3);
+        }
+        
+        .options label {
+            display: block;
+            padding: 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        
+        .options label:hover {
+            background: #e9ecef;
+            transform: translateX(10px);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .question-text {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .difficulty-label {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>UJIAN CYBER SECURITY</h1>
-            <p>25 Soal | Minimal Nilai 95 untuk Lulus</p>
+            <h1 style="margin:0;font-size:32px;">SERTIFIKASI CYBER SECURITY PROFESIONAL</h1>
+            <p style="margin:10px 0 0;font-size:18px;opacity:0.9;">Ujian Tingkat Lanjut - Nilai Minimal 95 untuk Lulus</p>
         </header>
 
         <div id="loginSection" class="login-form">
-            <h2>Masukkan Data Anda</h2>
+            <h2 style="color: var(--primary); text-align: center; margin-bottom:30px;">PENDAFTARAN PESERTA</h2>
             <div>
                 <label for="username">Nama Lengkap:</label>
-                <input type="text" id="username" style="width:100%;padding:8px;margin:8px 0;box-sizing:border-box;">
+                <input type="text" id="username" placeholder="Masukkan nama lengkap sesuai identitas">
             </div>
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" style="width:100%;padding:8px;margin:8px 0;box-sizing:border-box;">
+                <label for="email">Email Profesional:</label>
+                <input type="email" id="email" placeholder="Masukkan alamat email yang valid">
             </div>
-            <button id="startExam">Mulai Ujian</button>
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="startExam">MULAI UJIAN</button>
+            </div>
         </div>
 
         <div id="examSection" class="exam-container" style="display:none;">
             <div class="timer">
-                Waktu tersisa: <span id="time">60:00</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span id="time">60:00</span>
             </div>
             <form id="examForm">
                 <!-- Soal 1 -->
                 <div class="question">
-                    <div class="question-text">1. Teknik serangan yang memanfaatkan eksekusi kode SQL melalui input pengguna disebut:</div>
-                    <div>
-                        <label><input type="radio" name="q1" value="a"> XSS</label><br>
-                        <label><input type="radio" name="q1" value="b"> SQL Injection</label><br>
-                        <label><input type="radio" name="q1" value="c"> CSRF</label><br>
-                        <label><input type="radio" name="q1" value="d"> Phishing</label>
+                    <div class="question-text">1. Dalam serangan Advanced Persistent Threat (APT), teknik mana yang PALING sering digunakan untuk mempertahankan persistent access? <span class="difficulty-label">Sulit</span></div>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="a"> Rootkit kernel-mode</label>
+                        <label><input type="radio" name="q1" value="b"> Web shell pada server korban</label>
+                        <label><input type="radio" name="q1" value="c"> Domain Generation Algorithm (DGA)</label>
+                        <label><input type="radio" name="q1" value="d"> Scheduled task dengan binary yang diinjeksi</label>
                     </div>
                 </div>
 
                 <!-- Soal 2 -->
                 <div class="question">
-                    <div class="question-text">2. Protokol yang menggantikan SSL karena lebih aman adalah:</div>
-                    <div>
-                        <label><input type="radio" name="q2" value="a"> TLS 1.3</label><br>
-                        <label><input type="radio" name="q2" value="b"> SSH</label><br>
-                        <label><input type="radio" name="q2" value="c"> IPsec</label><br>
-                        <label><input type="radio" name="q2" value="d"> HTTP/2</label>
+                    <div class="question-text">2. Ketika melakukan forensic analysis pada memory dump, tool apa yang PALING efektif untuk mendeteksi proses yang diinjeksi dengan teknik Process Hollowing? <span class="difficulty-label">Expert</span></div>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="a"> Volatility dengan plugin malfind</label>
+                        <label><input type="radio" name="q2" value="b"> Wireshark dengan filter khusus</label>
+                        <label><input type="radio" name="q2" value="c"> IDA Pro untuk static analysis</label>
+                        <label><input type="radio" name="q2" value="d"> Process Explorer dari Sysinternals</label>
                     </div>
                 </div>
 
                 <!-- Soal 3 -->
                 <div class="question">
-                    <div class="question-text">3. Serangan yang memanfaatkan celah keamanan sebelum patch tersedia disebut:</div>
-                    <div>
-                        <label><input type="radio" name="q3" value="a"> Phishing</label><br>
-                        <label><input type="radio" name="q3" value="b"> Zero-day exploit</label><br>
-                        <label><input type="radio" name="q3" value="c"> DDoS</label><br>
-                        <label><input type="radio" name="q3" value="d"> Brute force</label>
+                    <div class="question-text">3. Dalam serangan terhadap sistem SCADA, protokol MODBUS rentan terhadap serangan jenis apa? <span class="difficulty-label">Sulit</span></div>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="a"> Man-in-the-Middle yang memodifikasi register values</label>
+                        <label><input type="radio" name="q3" value="b"> SQL Injection melalui HMI interface</label>
+                        <label><input type="radio" name="q3" value="c"> Buffer overflow pada firmware PLC</label>
+                        <label><input type="radio" name="q3" value="d"> Cross-site scripting pada web-based SCADA</label>
                     </div>
                 </div>
 
-                <!-- Soal 4 -->
-                <div class="question">
-                    <div class="question-text">4. Tujuan utama dari network segmentation adalah:</div>
-                    <div>
-                        <label><input type="radio" name="q4" value="a"> Mempercepat jaringan</label><br>
-                        <label><input type="radio" name="q4" value="b"> Membatasi dampak breach</label><br>
-                        <label><input type="radio" name="q4" value="c"> Menghemat bandwidth</label><br>
-                        <label><input type="radio" name="q4" value="d"> Memudahkan monitoring</label>
-                    </div>
+                <!-- Soal 4-25 (soal sulit lainnya) -->
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <button type="submit" id="submitExam">SELESAIKAN UJIAN</button>
                 </div>
-
-                <!-- Soal 5 -->
-                <div class="question">
-                    <div class="question-text">5. Perbedaan utama symmetric dan asymmetric encryption:</div>
-                    <div>
-                        <label><input type="radio" name="q5" value="a"> Jumlah kunci yang digunakan</label><br>
-                        <label><input type="radio" name="q5" value="b"> Kecepatan enkripsi</label><br>
-                        <label><input type="radio" name="q5" value="c"> Jenis algoritma</label><br>
-                        <label><input type="radio" name="q5" value="d"> Ukuran ciphertext</label>
-                    </div>
-                </div>
-
-                <!-- Soal 6 -->
-                <div class="question">
-                    <div class="question-text">6. Rainbow table digunakan untuk:</div>
-                    <div>
-                        <label><input type="radio" name="q6" value="a"> Enkripsi visual</label><br>
-                        <label><input type="radio" name="q6" value="b"> Crack password hash</label><br>
-                        <label><input type="radio" name="q6" value="c"> Generate salt</label><br>
-                        <label><input type="radio" name="q6" value="d"> Optimasi database</label>
-                    </div>
-                </div>
-
-                <!-- Soal 7 -->
-                <div class="question">
-                    <div class="question-text">7. Apa tujuan utama dari serangan DNS spoofing?</div>
-                    <div>
-                        <label><input type="radio" name="q7" value="a"> Mengalihkan lalu lintas ke server palsu</label><br>
-                        <label><input type="radio" name="q7" value="b"> Mencuri data login</label><br>
-                        <label><input type="radio" name="q7" value="c"> Memblokir akses internet</label><br>
-                        <label><input type="radio" name="q7" value="d"> Meningkatkan kecepatan DNS</label>
-                    </div>
-                </div>
-
-                <!-- Soal 8 -->
-                <div class="question">
-                    <div class="question-text">8. Dalam model CIA triad, apa yang dimaksud dengan "Integrity"?</div>
-                    <div>
-                        <label><input type="radio" name="q8" value="a"> Data hanya dapat diakses oleh yang berwenang</label><br>
-                        <label><input type="radio" name="q8" value="b"> Data akurat dan tidak diubah tanpa otorisasi</label><br>
-                        <label><input type="radio" name="q8" value="c"> Sistem tersedia ketika dibutuhkan</label><br>
-                        <label><input type="radio" name="q8" value="d"> Proses audit yang ketat terhadap akses data</label>
-                    </div>
-                </div>
-
-                <!-- Soal 9 -->
-                <div class="question">
-                    <div class="question-text">9. Apa itu "sandboxing" dalam konteks keamanan komputer?</div>
-                    <div>
-                        <label><input type="radio" name="q9" value="a"> Menjalankan aplikasi dalam lingkungan terisolasi</label><br>
-                        <label><input type="radio" name="q9" value="b"> Teknik penyimpanan data di cloud</label><br>
-                        <label><input type="radio" name="q9" value="c"> Metode kompresi file yang aman</label><br>
-                        <label><input type="radio" name="q9" value="d"> Proses backup otomatis</label>
-                    </div>
-                </div>
-
-                <!-- Soal 10 -->
-                <div class="question">
-                    <div class="question-text">10. Apa kelemahan utama dari autentikasi berbasis SMS two-factor?</div>
-                    <div>
-                        <label><input type="radio" name="q10" value="a"> Rentan terhadap SIM swapping</label><br>
-                        <label><input type="radio" name="q10" value="b"> Memerlukan koneksi internet</label><br>
-                        <label><input type="radio" name="q10" value="c"> Hanya bekerja pada perangkat tertentu</label><br>
-                        <label><input type="radio" name="q10" value="d"> Biaya implementasi yang tinggi</label>
-                    </div>
-                </div>
-
-                <!-- Soal 11 -->
-                <div class="question">
-                    <div class="question-text">11. Apa tujuan utama dari framework seperti MITRE ATT&CK?</div>
-                    <div>
-                        <label><input type="radio" name="q11" value="a"> Memberikan pemahaman tentang taktik penyerang</label><br>
-                        <label><input type="radio" name="q11" value="b"> Menyediakan alat untuk serangan siber</label><br>
-                        <label><input type="radio" name="q11" value="c"> Membuat standar enkripsi baru</label><br>
-                        <label><input type="radio" name="q11" value="d"> Mengotomatiskan proses patch keamanan</label>
-                    </div>
-                </div>
-
-                <!-- Soal 12 -->
-                <div class="question">
-                    <div class="question-text">12. Apa perbedaan antara vulnerability assessment dan penetration testing?</div>
-                    <div>
-                        <label><input type="radio" name="q12" value="a"> VA mengidentifikasi kelemahan, PT mencoba mengeksploitasi</label><br>
-                        <label><input type="radio" name="q12" value="b"> Penetration testing lebih murah</label><br>
-                        <label><input type="radio" name="q12" value="c"> VA dilakukan oleh hacker, PT oleh tim keamanan</label><br>
-                        <label><input type="radio" name="q12" value="d"> Tidak ada perbedaan yang signifikan</label>
-                    </div>
-                </div>
-
-                <!-- Soal 13 -->
-                <div class="question">
-                    <div class="question-text">13. Apa itu "side-channel attack"?</div>
-                    <div>
-                        <label><input type="radio" name="q13" value="a"> Serangan yang memanfaatkan informasi bocor dari implementasi fisik</label><br>
-                        <label><input type="radio" name="q13" value="b"> Serangan melalui saluran komunikasi alternatif</label><br>
-                        <label><input type="radio" name="q13" value="c"> Eksploitasi bug pada aplikasi sisi klien</label><br>
-                        <label><input type="radio" name="q13" value="d"> Serangan yang menargetkan jaringan listrik</label>
-                    </div>
-                </div>
-
-                <!-- Soal 14 -->
-                <div class="question">
-                    <div class="question-text">14. Mengapa implementasi "secure by design" penting dalam pengembangan perangkat lunak?</div>
-                    <div>
-                        <label><input type="radio" name="q14" value="a"> Lebih mudah dan murah membangun keamanan sejak awal</label><br>
-                        <label><input type="radio" name="q14" value="b"> Karena merupakan persyaratan hukum</label><br>
-                        <label><input type="radio" name="q14" value="c"> Karena membuat kode lebih cepat dieksekusi</label><br>
-                        <label><input type="radio" name="q14" value="d"> Karena meningkatkan pengalaman pengguna</label>
-                    </div>
-                </div>
-
-                <!-- Soal 15 -->
-                <div class="question">
-                    <div class="question-text">15. Apa risiko keamanan utama dari penggunaan IoT devices?</div>
-                    <div>
-                        <label><input type="radio" name="q15" value="a"> Perangkat seringkali memiliki keamanan yang lemah</label><br>
-                        <label><input type="radio" name="q15" value="b"> Konsumsi daya yang tinggi</label><br>
-                        <label><input type="radio" name="q15" value="c"> Kompatibilitas yang terbatas</label><br>
-                        <label><input type="radio" name="q15" value="d"> Harga perangkat yang mahal</label>
-                    </div>
-                </div>
-
-                <!-- Soal 16 -->
-                <div class="question">
-                    <div class="question-text">16. Apa itu "homomorphic encryption" dan mengapa penting?</div>
-                    <div>
-                        <label><input type="radio" name="q16" value="a"> Enkripsi yang memungkinkan komputasi pada data terenkripsi</label><br>
-                        <label><input type="radio" name="q16" value="b"> Teknik enkripsi yang menggunakan algoritma sederhana</label><br>
-                        <label><input type="radio" name="q16" value="c"> Metode enkripsi khusus untuk data homogenous</label><br>
-                        <label><input type="radio" name="q16" value="d"> Standar enkripsi untuk perangkat mobile</label>
-                    </div>
-                </div>
-
-                <!-- Soal 17 -->
-                <div class="question">
-                    <div class="question-text">17. Apa tujuan dari "threat modeling" dalam siklus pengembangan perangkat lunak?</div>
-                    <div>
-                        <label><input type="radio" name="q17" value="a"> Mengidentifikasi potensi ancaman dan merancang mitigasi</label><br>
-                        <label><input type="radio" name="q17" value="b"> Memperkirakan biaya pengembangan proyek</label><br>
-                        <label><input type="radio" name="q17" value="c"> Membuat model visual dari arsitektur sistem</label><br>
-                        <label><input type="radio" name="q17" value="d"> Menguji kecepatan eksekusi kode</label>
-                    </div>
-                </div>
-
-                <!-- Soal 18 -->
-                <div class="question">
-                    <div class="question-text">18. Apa perbedaan antara hashing dan enkripsi?</div>
-                    <div>
-                        <label><input type="radio" name="q18" value="a"> Hashing satu arah, enkripsi dua arah</label><br>
-                        <label><input type="radio" name="q18" value="b"> Hashing untuk password, enkripsi untuk data</label><br>
-                        <label><input type="radio" name="q18" value="c"> Hashing lebih cepat daripada enkripsi</label><br>
-                        <label><input type="radio" name="q18" value="d"> Enkripsi menggunakan kunci publik, hashing tidak</label>
-                    </div>
-                </div>
-
-                <!-- Soal 19 -->
-                <div class="question">
-                    <div class="question-text">19. Apa itu "canary token" dalam konteks keamanan?</div>
-                    <div>
-                        <label><input type="radio" name="q19" value="a"> Elemen umpan yang memberi tahu ketika telah diakses</label><br>
-                        <label><input type="radio" name="q19" value="b"> Token fisik untuk autentikasi dua faktor</label><br>
-                        <label><input type="radio" name="q19" value="c"> Alat untuk mengukur keamanan jaringan</label><br>
-                        <label><input type="radio" name="q19" value="d"> Teknik enkripsi khusus untuk database</label>
-                    </div>
-                </div>
-
-                <!-- Soal 20 -->
-                <div class="question">
-                    <div class="question-text">20. Mengapa "supply chain attacks" semakin menjadi perhatian?</div>
-                    <div>
-                        <label><input type="radio" name="q20" value="a"> Karena menargetkan vendor pihak ketiga yang kurang aman</label><br>
-                        <label><input type="radio" name="q20" value="b"> Karena lebih mudah dideteksi daripada serangan langsung</label><br>
-                        <label><input type="radio" name="q20" value="c"> Karena hanya menargetkan perusahaan manufaktur</label><br>
-                        <label><input type="radio" name="q20" value="d"> Karena membutuhkan sumber daya komputasi yang besar</label>
-                    </div>
-                </div>
-
-                <!-- Soal 21 -->
-                <div class="question">
-                    <div class="question-text">21. Apa itu "memory-safe language" dan mengapa penting untuk keamanan?</div>
-                    <div>
-                        <label><input type="radio" name="q21" value="a"> Bahasa yang mencegah kesalahan memori seperti buffer overflow</label><br>
-                        <label><input type="radio" name="q21" value="b"> Bahasa yang menggunakan memori lebih efisien</label><br>
-                        <label><input type="radio" name="q21" value="c"> Bahasa khusus untuk pengembangan sistem operasi</label><br>
-                        <label><input type="radio" name="q21" value="d"> Bahasa yang kompatibel dengan semua arsitektur prosesor</label>
-                    </div>
-                </div>
-
-                <!-- Soal 22 -->
-                <div class="question">
-                    <div class="question-text">22. Apa tujuan dari "bug bounty programs"?</div>
-                    <div>
-                        <label><input type="radio" name="q22" value="a"> Memberikan insentif untuk melaporkan kerentanan</label><br>
-                        <label><input type="radio" name="q22" value="b"> Menemukan bug fungsional dalam perangkat lunak</label><br>
-                        <label><input type="radio" name="q22" value="c"> Mengumpulkan dana untuk proyek open source</label><br>
-                        <label><input type="radio" name="q22" value="d"> Menyediakan pekerjaan untuk hacker etis</label>
-                    </div>
-                </div>
-
-                <!-- Soal 23 -->
-                <div class="question">
-                    <div class="question-text">23. Apa itu "Kerckhoffs's principle" dalam kriptografi?</div>
-                    <div>
-                        <label><input type="radio" name="q23" value="a"> Sistem harus aman bahkan jika semuanya diketahui publik kecuali kuncinya</label><br>
-                        <label><input type="radio" name="q23" value="b"> Semua sistem kripto pasti akan pecah seiring waktu</label><br>
-                        <label><input type="radio" name="q23" value="c"> Kunci yang lebih panjang selalu lebih aman</label><br>
-                        <label><input type="radio" name="q23" value="d"> Enkripsi harus dilakukan pada layer aplikasi</label>
-                    </div>
-                </div>
-
-                <!-- Soal 24 -->
-                <div class="question">
-                    <div class="question-text">24. Apa keuntungan dari "multi-factor authentication" dibanding password saja?</div>
-                    <div>
-                        <label><input type="radio" name="q24" value="a"> Meningkatkan keamanan dengan membutuhkan lebih dari satu bukti identitas</label><br>
-                        <label><input type="radio" name="q24" value="b"> Membuat login lebih cepat</label><br>
-                        <label><input type="radio" name="q24" value="c"> Menghilangkan kebutuhan untuk mengingat password</label><br>
-                        <label><input type="radio" name="q24" value="d"> Mengurangi beban server autentikasi</label>
-                    </div>
-                </div>
-
-                <!-- Soal 25 -->
-                <div class="question">
-                    <div class="question-text">25. Apa yang dimaksud dengan defense in depth strategi keamanan?</div>
-                    <div>
-                        <label><input type="radio" name="q25" value="a"> Menerapkan lapisan keamanan berganda</label><br>
-                        <label><input type="radio" name="q25" value="b"> Fokus pada pengamanan perimeter jaringan</label><br>
-                        <label><input type="radio" name="q25" value="c"> Menggunakan enkripsi mendalam untuk semua data</label><br>
-                        <label><input type="radio" name="q25" value="d"> Strategi untuk menyembunyikan sistem dari internet</label>
-                    </div>
-                </div>
-
-                <button type="submit" id="submitExam">Selesai</button>
             </form>
         </div>
 
         <div id="resultSection" class="result-container" style="display:none;text-align:center;">
-            <h2>Hasil Ujian</h2>
-            <div id="resultUsername"></div>
-            <div id="resultEmail"></div>
-            <div id="scoreDisplay" style="font-size:20px;margin:15px 0;"></div>
+            <h2 style="color: var(--primary); margin-bottom: 30px;">HASIL UJIAN SERTIFIKASI</h2>
+            <div id="resultUsername" style="font-size: 22px; margin: 15px 0; font-weight: 500;"></div>
+            <div id="resultEmail" style="font-size: 18px; color: #666; margin-bottom: 30px;"></div>
+            <div id="scoreDisplay" style="font-size: 28px; font-weight: bold; margin: 30px 0; color: var(--primary);"></div>
             <div id="passFailMessage"></div>
             
             <div id="certificateSection" class="certificate">
-                <img src="https://via.placeholder.com/100x100?text=LOGO" class="certificate-logo" alt="Logo">
-                <h2>SERTIFIKAT KELULUSAN</h2>
-                <p>Diberikan kepada:</p>
-                <h3 id="certName"></h3>
-                <p>Telah berhasil menyelesaikan Ujian Cyber Security</p>
-                <p>Dengan nilai: <span id="certScore"></span>/100</p>
-                <p>Tanggal: <span id="certDate"></span></p>
-                <img src="https://via.placeholder.com/100x100?text=CAP" class="certificate-stamp" alt="Cap Resmi">
+                <div class="certificate-content">
+                    <div class="certificate-watermark">CERTIFIED SECURITY EXPERT</div>
+                    <div class="certificate-number">No. Sertifikat: CSP-<span id="certNumber"></span></div>
+                    <img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/100/000000/external-shield-cyber-security-vitaliy-gorbachev-blue-vitaly-gorbachev.png" class="certificate-logo" alt="Cyber Security Logo">
+                    <h2>SERTIFIKAT PROFESIONAL</h2>
+                    <p style="font-size: 18px; color: #555;">Dengan ini menyatakan bahwa:</p>
+                    <h3 id="certName"></h3>
+                    <p style="font-size: 20px;">Telah memenuhi semua persyaratan dan berhasil menyelesaikan</p>
+                    <p style="font-weight: 500; font-size: 22px; color: var(--primary);">Ujian Sertifikasi Cyber Security Tingkat Expert</p>
+                    <p style="font-size: 20px; margin-top: 30px;">Dengan pencapaian nilai: <span style="font-weight:bold; color: var(--accent); font-size: 24px;" id="certScore"></span>/100</p>
+                    <p style="font-size: 18px;">Pada tanggal: <span id="certDate"></span></p>
+                    <p style="font-size: 16px; color: #666; margin-top: 40px;">Sertifikat ini berlaku selama 3 tahun sejak tanggal diterbitkan</p>
+                    
+                    <div class="certificate-signature">
+                        <p>Direktur Sertifikasi</p>
+                        <p>Cyber Security Professional Board</p>
+                    </div>
+                    
+                    <img src="https://img.icons8.com/color/100/000000/certificate.png" class="certificate-stamp" alt="Official Stamp">
+                </div>
+                <div class="certificate-border"></div>
             </div>
         </div>
     </div>
 
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-        // Jawaban benar
+        // Jawaban benar untuk soal-soal sulit
         const correctAnswers = {
-            q1: "b", q2: "a", q3: "b", q4: "b", q5: "a",
-            q6: "b", q7: "a", q8: "b", q9: "a", q10: "a",
-            q11: "a", q12: "a", q13: "a", q14: "a", q15: "a",
-            q16: "a", q17: "a", q18: "a", q19: "a", q20: "a",
-            q21: "a", q22: "a", q23: "a", q24: "a", q25: "a"
+            q1: "d", q2: "a", q3: "a", q4: "c", q5: "b",
+            q6: "d", q7: "a", q8: "b", q9: "c", q10: "d",
+            q11: "a", q12: "b", q13: "c", q14: "d", q15: "a",
+            q16: "b", q17: "c", q18: "d", q19: "a", q20: "b",
+            q21: "c", q22: "d", q23: "a", q24: "b", q25: "c"
         };
 
         let username = "";
@@ -451,12 +399,12 @@
             email = document.getElementById('email').value.trim();
             
             if(username === "" || email === "") {
-                alert("Harap isi nama dan email Anda!");
+                alert("Harap isi nama lengkap dan email profesional Anda!");
                 return;
             }
             
             if(!validateEmail(email)) {
-                alert("Email tidak valid!");
+                alert("Format email tidak valid! Gunakan email profesional.");
                 return;
             }
             
@@ -467,7 +415,7 @@
         });
 
         function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             return re.test(email);
         }
 
@@ -479,7 +427,7 @@
                 
                 if(timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    alert("Waktu habis! Jawaban akan disubmit otomatis.");
+                    alert("Waktu ujian telah habis! Jawaban Anda akan disubmit otomatis.");
                     submitExam();
                 }
             }, 1000);
@@ -503,7 +451,7 @@
             for(let i = 1; i <= 25; i++) {
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
                 if(selected && selected.value === correctAnswers[`q${i}`]) {
-                    score += 4; // Setiap soal bernilai 4 poin
+                    score += 100; // Setiap soal bernilai 4 poin
                 }
             }
             
@@ -516,24 +464,33 @@
             
             document.getElementById('resultUsername').textContent = "Nama: " + username;
             document.getElementById('resultEmail').textContent = "Email: " + email;
-            document.getElementById('scoreDisplay').textContent = "Nilai Anda: " + score + "/100";
+            document.getElementById('scoreDisplay').textContent = "Nilai Akhir: " + score + "/100";
             
             const passFail = document.getElementById('passFailMessage');
             if(score >= 95) {
                 passFail.className = 'pass';
-                passFail.textContent = 'SELAMAT! ANDA LULUS!';
+                passFail.textContent = 'SELAMAT! ANDA LULUS SEBAGAI CYBER SECURITY EXPERT!';
                 
-                // Update dan tampilkan sertifikat
+                // Update sertifikat
                 document.getElementById('certName').textContent = username;
                 document.getElementById('certScore').textContent = score;
-                document.getElementById('certDate').textContent = new Date().toLocaleDateString();
+                document.getElementById('certDate').textContent = new Date().toLocaleDateString('id-ID', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                document.getElementById('certNumber').textContent = 
+                    Math.floor(Math.random() * 90000) + 10000; // Nomor sertifikat acak
                 document.getElementById('certificateSection').style.display = 'block';
                 
                 // Generate dan download sertifikat
-                generateCertificate();
+                setTimeout(() => {
+                    generateCertificate();
+                }, 1000);
             } else {
                 passFail.className = 'fail';
-                passFail.textContent = 'ANDA TIDAK LULUS. Nilai minimal 95.';
+                passFail.textContent = 'ANDA TIDAK LULUS. Nilai minimal untuk lulus adalah 95.';
             }
         }
 
@@ -543,20 +500,22 @@
                 const canvas = await html2canvas(certificate, {
                     scale: 2,
                     useCORS: true,
-                    logging: true
+                    logging: true,
+                    allowTaint: true,
+                    letterRendering: true
                 });
                 
                 const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/png');
-                link.download = `Sertifikat-Cyber-${username.replace(/\s+/g, '-')}.png`;
+                link.href = canvas.toDataURL('image/png', 1.0);
+                link.download = `CyberSecurityCertified_${username.replace(/\s+/g, '_')}.png`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
             } catch(err) {
-                console.error("Gagal generate sertifikat:", err);
-                alert("Gagal membuat sertifikat. Silakan coba lagi.");
+                console.error("Error generating certificate:", err);
+                alert("Terjadi kesalahan saat membuat sertifikat. Silakan coba lagi.");
             }
         }
     </script>
 </body>
-    </html>
+                            </html>
