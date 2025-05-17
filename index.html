@@ -1,615 +1,529 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PEYEEND | Ultimate Stream Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>Ujian Cyber Security Expert</title>
     <style>
-        :root {
-            --gold: #FFD700;
-            --purple: #4B0082;
-            --dark: #0A001A;
-            --neon-glow: 0 0 15px var(--gold);
-            --glass: rgba(255, 215, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background: var(--dark);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .bg-blur {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at center, var(--purple) 0%, var(--dark) 70%);
-            filter: blur(100px);
-            animation: rotateBg 60s linear infinite;
-        }
-
-        @keyframes rotateBg {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        .shape:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            background: var(--gold);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            background: var(--purple);
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            top: 60%;
-            left: 70%;
-            animation-delay: 5s;
-        }
-
-        .shape:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            background: var(--gold);
-            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-            top: 30%;
-            left: 50%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-50px) rotate(5deg); }
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
             padding: 20px;
-            position: relative;
-            z-index: 1;
+            color: #2c3e50;
+            line-height: 1.6;
         }
-
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
-
-        .live-badge {
-            background: linear-gradient(45deg, #FF416C, #FF4B2B);
-            padding: 12px 25px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: pulse 1.5s infinite;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Profile Section */
-        .profile-section {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .profile-container {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.5s;
-            border: 3px solid var(--gold);
-            box-shadow: var(--neon-glow);
-            overflow: hidden;
-        }
-
-        .profile-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px var(--gold);
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Links Grid */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 50px 0;
-        }
-
-        .link-card {
-            background: var(--glass);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            text-decoration: none;
+        
+        header {
+            background: #2c3e50;
             color: white;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
-
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--neon-glow);
-            border-color: var(--gold);
-        }
-
-        .link-icon {
-            font-size: 28px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 215, 0, 0.2);
-            border-radius: 50%;
-        }
-
-        .link-content {
-            flex: 1;
-        }
-
-        .link-content h3 {
-            margin-bottom: 5px;
-            color: var(--gold);
-        }
-
-        /* Server Info */
-        .server-box {
-            background: rgba(106, 176, 74, 0.1);
-            border-left: 4px solid #6AB04A;
-            border-radius: 15px;
             padding: 25px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
         }
-
-        .server-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.minecraft.net/content/dam/minecraft/touchup-2020/minecraft-logo.svg') center/contain no-repeat;
-            opacity: 0.05;
-            pointer-events: none;
+        
+        .login-form, .exam-container, .result-container {
+            padding: 25px;
         }
-
-        .copy-btn {
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 25px;
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .options label {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            background: #e9ecef;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            margin-left: 10px;
+            transition: all 0.2s;
         }
-
-        .copy-btn:hover {
-            transform: scale(1.05);
-            box-shadow: var(--neon-glow);
+        
+        .options label:hover {
+            background: #dee2e6;
         }
-
-        /* Schedule Section */
-        .schedule-container {
-            margin: 60px 0;
-        }
-
-        .schedule-box {
-            background: var(--glass);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .schedule-box::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: url('https://www.tiktok.com/favicon.ico') center/contain no-repeat;
-            opacity: 0.1;
-        }
-
-        .schedule-title {
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8em;
-            text-shadow: var(--neon-glow);
-            position: relative;
-        }
-
-        .schedule-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 3px;
-        }
-
-        .schedule-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,215,0,0.1);
-        }
-
-        .schedule-item:last-child {
-            border-bottom: none;
-        }
-
-        .game-name {
-            font-weight: 600;
-            color: var(--gold);
-            flex: 1;
-        }
-
-        .schedule-time {
-            flex: 1;
-            text-align: right;
-            font-weight: 500;
-        }
-
-        .disclaimer {
-            font-size: 0.8em;
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Video Section */
-        .video-section {
-            margin: 60px 0;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--neon-glow);
-            transition: all 0.3s;
-        }
-
-        .video-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px var(--gold);
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-top: 56.25%;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        
+        button {
+            background: #3498db;
+            color: white;
             border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
         }
-
-        .section-title {
-            color: var(--gold);
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .timer {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 25px;
             text-align: center;
+            font-weight: bold;
+        }
+        
+        .certificate {
+            display: none;
+            width: 800px;
+            margin: 20px auto;
+            padding: 40px;
+            background: white;
+            border: 2px solid #2c3e50;
+            text-align: center;
+        }
+        
+        .certificate h2 {
+            color: #2c3e50;
             margin-bottom: 30px;
-            font-size: 2em;
-            text-shadow: var(--neon-glow);
-            position: relative;
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 3px;
+        
+        .certificate h3 {
+            color: #27ae60;
+            margin: 25px 0;
+            font-size: 24px;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .schedule-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-            
-            .schedule-time {
-                text-align: left;
-                width: 100%;
-            }
-            
-            .profile-container {
-                width: 180px;
-                height: 180px;
-            }
+        
+        .pass {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .fail {
+            color: #e74c3c;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="bg-wrapper">
-        <div class="bg-blur"></div>
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-    </div>
-
     <div class="container">
-        <header class="header">
-            <h1 style="color: var(--gold); text-shadow: var(--neon-glow);">PEYEEND</h1>
-            <div class="live-badge">
-                <i class="fas fa-circle"></i>
-                LIVE NOW
-            </div>
+        <header>
+            <h1>Ujian Cyber Security Expert</h1>
+            <p>25 Soal | Minimal Nilai 95 untuk Lulus</p>
         </header>
 
-        <section class="profile-section">
-            <div class="profile-container">
-                <img src="https://l.top4top.io/p_34206uejj3.jpg" alt="PEYEEND" class="profile-pic">
+        <div id="loginSection" class="login-form">
+            <h2>Data Peserta</h2>
+            <div>
+                <label>Nama Lengkap:</label>
+                <input type="text" id="username" placeholder="Masukkan nama lengkap" style="width:100%;padding:10px;margin:8px 0 20px;border:1px solid #ddd;border-radius:5px;">
             </div>
-            <h2 style="color: var(--gold); text-shadow: var(--neon-glow);">GAMING STREAMER</h2>
-            <p>Mobile Legends • Minecraft • Stumble Guys</p>
-        </section>
-
-        <div class="links-grid">
-            <a href="https://www.tiktok.com/@peyeendyt" target="_blank" class="link-card">
-                <div class="link-icon">
-                    <i class="fab fa-tiktok"></i>
-                </div>
-                <div class="link-content">
-                    <h3>TikTok Live</h3>
-                    <p>Join daily streams</p>
-                </div>
-            </a>
-
-            <a href="https://www.youtube.com/channel/UCcACzzBkv-fHytwwJB7jA-g" target="_blank" class="link-card">
-                <div class="link-icon">
-                    <i class="fab fa-youtube"></i>
-                </div>
-                <div class="link-content">
-                    <h3>YouTube</h3>
-                    <p>Watch latest videos</p>
-                </div>
-            </a>
-
-            <a href="https://discord.gg/KeyGNzgh" target="_blank" class="link-card">
-                <div class="link-icon">
-                    <i class="fab fa-discord"></i>
-                </div>
-                <div class="link-content">
-                    <h3>Discord</h3>
-                    <p>Join our community</p>
-                </div>
-            </a>
-
-            <a href="https://sociabuzz.com/peyeend/tribe" target="_blank" class="link-card">
-                <div class="link-icon">
-                    <i class="fas fa-hand-holding-heart"></i>
-                </div>
-                <div class="link-content">
-                    <h3>Support</h3>
-                    <p>Support the stream</p>
-                </div>
-            </a>
-        </div>
-
-        <!-- Minecraft Server Info -->
-        <div class="server-box">
-            <h3 style="color: var(--gold); margin-bottom: 20px; text-align: center;">🎮 MINECRAFT SERVER</h3>
-            <p style="margin: 15px 0; text-align: center;">
-                <span style="color: var(--gold);">IP:</span> bolopeyeend.serveminecraft.net
-                <button class="copy-btn" onclick="copyIP()">Copy</button>
-            </p>
-            <p style="text-align: center;">
-                <span style="color: var(--gold);">Port:</span> 25029
-                <button class="copy-btn" onclick="copyPort()">Copy</button>
-            </p>
-        </div>
-
-        <!-- Schedule Section -->
-        <div class="schedule-container">
-            <div class="schedule-box">
-                <h2 class="schedule-title">JADWAL LIVE TIKTOK</h2>
-                
-                <div class="schedule-item">
-                    <span class="game-name">Stumble Guys</span>
-                    <span class="schedule-time">Setiap Hari - 14:00 WIB</span>
-                </div>
-                
-                <div class="schedule-item">
-                    <span class="game-name">Minecraft</span>
-                    <span class="schedule-time">Senin s.d. Jumat - 20:00 WIB</span>
-                </div>
-                
-                <div class="schedule-item">
-                    <span class="game-name">Roblox</span>
-                    <span class="schedule-time">Sabtu & Minggu - 09:00 WIB</span>
-                </div>
-                
-                <div class="schedule-item">
-                    <span class="game-name">MCGG (Magic Chess GoGo)</span>
-                    <span class="schedule-time">Setiap Hari - 11:00 WIB</span>
-                </div>
-                
-                <div class="schedule-item">
-                    <span class="game-name">Blood Strike</span>
-                    <span class="schedule-time">Belum Tau banyak bet ni game :v</span>
-                </div>
-                
-                <p class="disclaimer">* Jadwal bisa berubah sesuai kondisi, mohon dimaklumi</p>
+            <div>
+                <label>Email:</label>
+                <input type="email" id="email" placeholder="Masukkan email valid" style="width:100%;padding:10px;margin:8px 0 20px;border:1px solid #ddd;border-radius:5px;">
             </div>
+            <button id="startExam">Mulai Ujian</button>
         </div>
 
-        <!-- Video Section -->
-        <div class="video-section">
-            <h2 class="section-title">VIDEO TERBARU</h2>
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe id="youtubeVideo" src="https://www.youtube.com/embed/2MAf2i_aL1w" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+        <div id="examSection" class="exam-container" style="display:none;">
+            <div class="timer">
+                ⏳ Waktu Tersisa: <span id="time">60:00</span>
+            </div>
+            <form id="examForm">
+                <!-- Soal 1-25 -->
+                <div class="question">
+                    <div class="question-text">1. Kerentanan ROCA (Return of Coppersmith's Attack) mempengaruhi komponen kriptografi apa?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="a"> Implementasi RSA pada smart card</label>
+                        <label><input type="radio" name="q1" value="b"> Algoritma AES dalam mode CBC</label>
+                        <label><input type="radio" name="q1" value="c"> Fungsi hash SHA-3</label>
+                        <label><input type="radio" name="q1" value="d"> Protokol Diffie-Hellman</label>
+                    </div>
                 </div>
+
+                <div class="question">
+                    <div class="question-text">2. Teknik apa yang digunakan dalam serangan Spectre v2?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="a"> Branch Target Injection</label>
+                        <label><input type="radio" name="q2" value="b"> Rowhammer</label>
+                        <label><input type="radio" name="q2" value="c"> Buffer Overflow</label>
+                        <label><input type="radio" name="q2" value="d"> SQL Injection</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. Dalam analisis malware, apa indikator Process Doppelgänging?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="a"> Process hollowing dengan transaksi NTFS</label>
+                        <label><input type="radio" name="q3" value="b"> DLL hijacking melalui manifest files</label>
+                        <label><input type="radio" name="q3" value="c"> Code injection menggunakan APC</label>
+                        <label><input type="radio" name="q3" value="d"> Memory allocation via NtMapViewOfSection</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">4. Apa tujuan utama serangan Golden Ticket dalam Active Directory?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="a"> Mendapatkan akses domain admin persisten</label>
+                        <label><input type="radio" name="q4" value="b"> Melakukan DDoS terhadap domain controller</label>
+                        <label><input type="radio" name="q4" value="c"> Enkripsi data dengan sertifikat domain</label>
+                        <label><input type="radio" name="q4" value="d"> Bypass autentikasi multi-factor</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. Teknik apa yang digunakan dalam serangan DNS Rebinding?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="a"> Memanfaatkan TTL record DNS</label>
+                        <label><input type="radio" name="q5" value="b"> Poisoning cache resolver lokal</label>
+                        <label><input type="radio" name="q5" value="c"> Eksploitasi Same-Origin Policy</label>
+                        <label><input type="radio" name="q5" value="d"> Bypass DNSSEC validation</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. Apa kelemahan utama pada serangan DROWN (Decrypting RSA with Obsolete and Weakened eNcryption)?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="a"> Dukungan SSLv2 yang tidak aman</label>
+                        <label><input type="radio" name="q6" value="b"> Implementasi RC4 yang lemah</label>
+                        <label><input type="radio" name="q6" value="c"> Padding oracle pada CBC mode</label>
+                        <label><input type="radio" name="q6" value="d"> Collision attack pada MD5</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">7. Pada memory forensics, apa indikator code injection menggunakan Thread Execution Hijacking?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="a"> Thread yang mengeksekusi code di region memory yang tidak terikat modul</label>
+                        <label><input type="radio" name="q7" value="b"> Adanya handle yang tidak dikenal ke proses lsass</label>
+                        <label><input type="radio" name="q7" value="c"> Modifikasi entry point pada PE header</label>
+                        <label><input type="radio" name="q7" value="d"> Adanya hidden process tree</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">8. Apa teknik bypass ASLR yang efektif pada sistem 64-bit?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="a"> Partial pointer overwrite</label>
+                        <label><input type="radio" name="q8" value="b"> GOT/PLT overwrite</label>
+                        <label><input type="radio" name="q8" value="c"> Return-oriented programming</label>
+                        <label><input type="radio" name="q8" value="d"> Heap spraying</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">9. Apa tujuan penggunaan Canary Token dalam keamanan jaringan?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="a"> Deteksi early-stage intrusion</label>
+                        <label><input type="radio" name="q9" value="b"> Enkripsi traffic jaringan</label>
+                        <label><input type="radio" name="q9" value="c"> Autentikasi two-factor</label>
+                        <label><input type="radio" name="q9" value="d"> Bypass firewall rules</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">10. Kerentanan Dirty COW memanfaatkan kondisi race condition pada subsistem apa?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="a"> Memory management (mm)</label>
+                        <label><input type="radio" name="q10" value="b"> Filesystem (ext4)</label>
+                        <label><input type="radio" name="q10" value="c"> Network stack</label>
+                        <label><input type="radio" name="q10" value="d"> Process scheduler</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">11. Apa teknik mitigasi terbaik untuk serangan Rowhammer?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="a"> Penggunaan TRR (Target Row Refresh)</label>
+                        <label><input type="radio" name="q11" value="b"> Peningkatan ECC memory</label>
+                        <label><input type="radio" name="q11" value="c"> Isolasi physical memory</label>
+                        <label><input type="radio" name="q11" value="d"> Address Space Layout Randomization</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">12. Pada serangan Kerberoasting, apa yang dicoba didapatkan penyerang?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="a"> TGS-REP encrypted dengan RC4</label>
+                        <label><input type="radio" name="q12" value="b"> Golden Ticket</label>
+                        <label><input type="radio" name="q12" value="c"> NTLM hash administrator</label>
+                        <label><input type="radio" name="q12" value="d"> Certificate private key</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">13. Apa indikator serangan Pass-the-Ticket?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="a"> Penggunaan TGT yang valid dari sistem tidak dikenal</label>
+                        <label><input type="radio" name="q13" value="b"> Multiple failed logon attempts</label>
+                        <label><input type="radio" name="q13" value="c"> Logon events dari IP internal</label>
+                        <label><input type="radio" name="q13" value="d"> Penggunaan smart card yang tidak valid</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">14. Teknik apa yang digunakan dalam serangan TLBleed?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="a"> Side-channel attack melalui Translation Lookaside Buffer</label>
+                        <label><input type="radio" name="q14" value="b"> Buffer overflow pada network stack</label>
+                        <label><input type="radio" name="q14" value="c"> Cache poisoning melalui DNS</label>
+                        <label><input type="radio" name="q14" value="d"> Rowhammer pada DRAM</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">15. Apa tujuan penggunaan ROP (Return-Oriented Programming) dalam eksploitasi modern?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="a"> Bypass Data Execution Prevention</label>
+                        <label><input type="radio" name="q15" value="b"> Bypass Address Space Layout Randomization</label>
+                        <label><input type="radio" name="q15" value="c"> Bypass Stack Canary</label>
+                        <label><input type="radio" name="q15" value="d"> Bypass Control Flow Guard</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">16. Apa teknik deteksi memory corruption yang efektif untuk C++ programs?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="a"> AddressSanitizer (ASan)</label>
+                        <label><input type="radio" name="q16" value="b"> StackGuard</label>
+                        <label><input type="radio" name="q16" value="c"> Data Execution Prevention</label>
+                        <label><input type="radio" name="q16" value="d"> Control Flow Integrity</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">17. Kerentanan Meltdown memanfaatkan fitur prosesor apa?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="a"> Out-of-order execution</label>
+                        <label><input type="radio" name="q17" value="b"> Simultaneous multithreading</label>
+                        <label><input type="radio" name="q17" value="c"> Memory protection keys</label>
+                        <label><input type="radio" name="q17" value="d"> Virtualization extensions</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">18. Apa teknik utama dalam serangan SQL Smuggling?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="a"> Bypass WAF melalui charset encoding</label>
+                        <label><input type="radio" name="q18" value="b"> Time-based blind injection</label>
+                        <label><input type="radio" name="q18" value="c"> UNION-based injection</label>
+                        <label><input type="radio" name="q18" value="d"> Error-based injection</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">19. Apa indikator serangan DCShadow?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="a"> Replikasi object directory dari system context</label>
+                        <label><input type="radio" name="q19" value="b"> Modifikasi GPO tanpa audit trail</label>
+                        <label><input type="radio" name="q19" value="c"> Penggunaan golden ticket</label>
+                        <label><input type="radio" name="q19" value="d"> Logon events dari RODC</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">20. Apa teknik mitigasi untuk serangan Spectre di level hardware?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="a"> Microcode updates dengan LFENCE serialization</label>
+                        <label><input type="radio" name="q20" value="b"> Peningkatan ECC memory</label>
+                        <label><input type="radio" name="q20" value="c"> Penggunaan ASLR</label>
+                        <label><input type="radio" name="q20" value="d"> Implementasi Control Flow Guard</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">21. Pada forensic analysis, apa indikator penggunaan Process Doppelgänging?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q21" value="a"> Adanya transaksi NTFS yang di-rollback</label>
+                        <label><input type="radio" name="q21" value="b"> Modifikasi PE header di memory</label>
+                        <label><input type="radio" name="q21" value="c"> Section permissions RWX</label>
+                        <label><input type="radio" name="q21" value="d"> Hidden process tree</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">22. Apa tujuan penggunaan ROP dalam eksploitasi browser?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q22" value="a"> Bypass sandboxing mechanisms</label>
+                        <label><input type="radio" name="q22" value="b"> Achieve arbitrary code execution</label>
+                        <label><input type="radio" name="q22" value="c"> Bypass same-origin policy</label>
+                        <label><input type="radio" name="q22" value="d"> Exploit JIT compiler bugs</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">23. Apa teknik utama dalam serangan "BlueKeep"?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q23" value="a"> RCE melalui RDP protocol</label>
+                        <label><input type="radio" name="q23" value="b"> Buffer overflow di SMBv1</label>
+                        <label><input type="radio" name="q23" value="c"> Memory corruption di GDI</label>
+                        <label><input type="radio" name="q23" value="d"> Privilege escalation di Win32k</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">24. Apa indikator serangan DNS tunneling?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q24" value="a"> Volume query TXT record yang tinggi</label>
+                        <label><input type="radio" name="q24" value="b"> Penggunaan DNSSEC yang tidak valid</label>
+                        <label><input type="radio" name="q24" value="c"> Query subdomain acak dengan FQDN panjang</label>
+                        <label><input type="radio" name="q24" value="d"> Respon DNS dengan TTL rendah</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">25. Apa teknik mitigasi untuk serangan Dangling Pointer?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q25" value="a"> Penggunaan smart pointers</label>
+                        <label><input type="radio" name="q25" value="b"> Penerapan ASLR</label>
+                        <label><input type="radio" name="q25" value="c"> Stack canary protection</label>
+                        <label><input type="radio" name="q25" value="d"> Data Execution Prevention</label>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" id="submitExam">Selesaikan Ujian</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="resultSection" class="result-container" style="display:none;">
+            <h2>Hasil Ujian</h2>
+            <div id="resultUsername" style="font-weight: bold; font-size: 18px;"></div>
+            <div id="resultEmail" style="color: #666; margin-bottom: 20px;"></div>
+            <div id="passFailMessage" style="font-size: 20px;"></div>
+            
+            <div id="certificateSection" class="certificate">
+                <h2>Sertifikat Keahlian Cyber Security</h2>
+                <p>Diberikan kepada:</p>
+                <h3 id="certName"></h3>
+                <p>Telah berhasil menyelesaikan ujian sertifikasi</p>
+                <p>Cyber Security Expert</p>
+                <p>Tanggal: <span id="certDate"></span></p>
             </div>
         </div>
     </div>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-        // Copy Functions
-        function copyIP() {
-            navigator.clipboard.writeText('bolopeyeend.serveminecraft.net')
-                .then(() => showNotification('IP Server berhasil dicopy! 🎮'));
-        }
+        const correctAnswers = {
+            q1: "a", q2: "a", q3: "a", q4: "a", q5: "c",
+            q6: "a", q7: "a", q8: "c", q9: "a", q10: "a",
+            q11: "a", q12: "a", q13: "a", q14: "a", q15: "a",
+            q16: "a", q17: "a", q18: "a", q19: "a", q20: "a",
+            q21: "a", q22: "b", q23: "a", q24: "c", q25: "a"
+        };
 
-        function copyPort() {
-            navigator.clipboard.writeText('25029')
-                .then(() => showNotification('Port berhasil dicopy! 🔢'));
-        }
+        let username = "";
+        let email = "";
+        let timeLeft = 3600;
+        let timerInterval;
 
-        // Notification System
-        function showNotification(text) {
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.right = '20px';
-            notification.style.background = 'linear-gradient(45deg, var(--purple), var(--dark))';
-            notification.style.color = 'var(--gold)';
-            notification.style.padding = '15px 25px';
-            notification.style.borderRadius = '10px';
-            notification.style.boxShadow = 'var(--neon-glow)';
-            notification.style.zIndex = '1000';
-            notification.style.animation = 'fadeIn 0.3s';
-            notification.textContent = text;
+        document.getElementById('startExam').addEventListener('click', function() {
+            username = document.getElementById('username').value.trim();
+            email = document.getElementById('email').value.trim();
             
-            document.body.appendChild(notification);
+            if(!username || !email || !validateEmail(email)) {
+                alert("Harap isi nama dan email valid!");
+                return;
+            }
             
-            setTimeout(() => {
-                notification.style.animation = 'fadeOut 0.3s';
-                setTimeout(() => {
-                    notification.remove();
-                }, 300);
-            }, 2000);
-        }
-
-        // YouTube Video Update System
-        function updateYouTubeVideo(videoId) {
-            const iframe = document.getElementById('youtubeVideo');
-            iframe.src = `https://www.youtube.com/embed/${videoId}`;
-        }
-
-        // Example of how to update video (you can call this function whenever needed)
-        // updateYouTubeVideo('NEW_VIDEO_ID_HERE');
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            // You can add initialization code here if needed
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('examSection').style.display = 'block';
+            startTimer();
         });
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function startTimer() {
+            updateTimer();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                if(timeLeft <= 0) submitExam();
+            }, 1000);
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('time').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        document.getElementById('examForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearInterval(timerInterval);
+            submitExam();
+        });
+
+        function submitExam() {
+            let score = 0;
+            for(let i = 1; i <= 25; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if(selected && selected.value === correctAnswers[`q${i}`]) score += 4;
+            }
+            
+            showResults(score);
+        }
+
+        function showResults(score) {
+            document.getElementById('examSection').style.display = 'none';
+            document.getElementById('resultSection').style.display = 'block';
+            
+            document.getElementById('resultUsername').textContent = `Nama: ${username}`;
+            document.getElementById('resultEmail').textContent = `Email: ${email}`;
+            
+            const resultMessage = document.getElementById('passFailMessage');
+            if(score >= 95) {
+                resultMessage.className = 'pass';
+                resultMessage.textContent = 'SELAMAT! ANDA LULUS SEBAGAI CYBER SECURITY EXPERT!';
+                showCertificate();
+            } else {
+                resultMessage.className = 'fail';
+                resultMessage.textContent = `ANDA TIDAK LULUS. Nilai: ${score}/100`;
+            }
+        }
+
+        function showCertificate() {
+            const cert = document.getElementById('certificateSection');
+            cert.style.display = 'block';
+            document.getElementById('certName').textContent = username;
+            document.getElementById('certDate').textContent = new Date().toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            generateCertificateImage();
+        }
+
+        async function generateCertificateImage() {
+            try {
+                const canvas = await html2canvas(document.getElementById('certificateSection'));
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = `Sertifikat-Cyber-${username.replace(/\s+/g, '_')}.png`;
+                link.click();
+            } catch(err) {
+                console.error('Gagal membuat sertifikat:', err);
+            }
+        }
     </script>
 </body>
-    </html>
+                                   </html>
